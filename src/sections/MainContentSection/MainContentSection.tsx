@@ -280,8 +280,8 @@ export const MainContentSection = ()  => {
           const progress = self.progress;
           // 4 corners: top-left, top-right, bottom-left, bottom-right
           // We'll use scale and translate for a split effect
-          let scale = 1 - 0.5 * progress;
-          let x = 0, y = 0;
+          const scale = 1 - 0.5 * progress;
+          const x = 0, y = 0;
           // Move to corners as progress increases
           // if (progress > 0.25) {
           //   // Top-left

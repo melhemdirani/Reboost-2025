@@ -1,6 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import React from "react";
 import { FaLinkedinIn, FaWhatsapp, FaPhone, FaMailBulk } from "react-icons/fa";
 
