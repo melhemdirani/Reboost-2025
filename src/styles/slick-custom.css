@@ -1,0 +1,32 @@
+/* Custom styles for react-slick testimonials */
+.testimonials-slider .slick-slide {
+  padding: 0 12px;
+}
+
+.testimonials-slider .slick-track {
+  display: flex;
+  align-items: stretch;
+}
+
+.testimonials-slider .slick-slide > div {
+  height: 100%;
+}
+
+.testimonials-slider .slick-slide > div > div {
+  height: 100%;
+}
+
+/* Override default slick styles */
+.testimonials-slider .slick-dots {
+  display: none !important;
+}
+
+.testimonials-slider .slick-arrow {
+  display: none !important;
+}
+.slick-slide{
+  height: 300px;
+}
+.slide-item {
+  display: flex !important;
+}

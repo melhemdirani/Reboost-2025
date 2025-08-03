@@ -1,0 +1,365 @@
+
+"use client";
+import { NavigationSection } from "@/sections/NavigationSection/NavigationSection";
+import { FooterSection } from "@/sections/FooterSection/FooterSection";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { portfolioProjects } from "@/data/portfolio";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function PortfolioPage() {
+  // Refs for enhanced GSAP animations
+  const portfolioCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const portfolioSectionRef = useRef<HTMLDivElement>(null);
+  const heroSectionRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const badgesRef = useRef<HTMLDivElement>(null);
+
+  const services = [
+    "Custom Web Development",
+    "Mobile App Development", 
+    "SaaS Platform Development",
+    "AI & Machine Learning Integration",
+    "UI/UX Design",
+    "DevOps & Cloud Infrastructure"
+  ];
+
+  useEffect(() => {
+    // Enhanced hero section animation
+    const heroTl = gsap.timeline({ defaults: { ease: "expo.out" } });
+    
+    // Initial states
+    gsap.set([titleRef.current, subtitleRef.current, badgesRef.current], { opacity: 0 });
+    gsap.set(titleRef.current, { y: 100, scale: 0.8, rotationX: 45 });
+    gsap.set(subtitleRef.current, { y: 60, scale: 0.9 });
+    gsap.set(badgesRef.current, { y: 40, scale: 0.95 });
+
+    // Animate hero elements
+    heroTl
+      .to(titleRef.current, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        rotationX: 0,
+        duration: 1.2,
+      })
+      .to(subtitleRef.current, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+      }, "-=0.6")
+      .to(badgesRef.current, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+      }, "-=0.4");
+
+    // Enhanced portfolio cards animation - Row-based approach
+    if (typeof window !== 'undefined' && portfolioCardRefs.current.length) {
+      // Group cards into rows of 2
+      const rows = [];
+      for (let i = 0; i < portfolioCardRefs.current.length; i += 2) {
+        rows.push(portfolioCardRefs.current.slice(i, i + 2));
+      }
+
+      rows.forEach((rowCards, rowIndex) => {
+        rowCards.forEach((card, cardIndex) => {
+          if (!card) return;
+          
+          // Row-based starting positions
+          const isLeftCard = cardIndex === 0;
+          const rowOffset = rowIndex * 50; // Slight offset between rows
+          
+          let fromX, fromY, fromRotate, fromScale;
+          
+          if (isLeftCard) {
+            // Left card comes from left
+            fromX = -window.innerWidth * 0.4;
+            fromY = -100 + rowOffset;
+            fromRotate = -10;
+            fromScale = 0.8;
+          } else {
+            // Right card comes from right
+            fromX = window.innerWidth * 0.4;
+            fromY = -100 + rowOffset;
+            fromRotate = 10;
+            fromScale = 0.8;
+          }
+          
+          // Set initial state
+          gsap.set(card, { 
+            x: fromX, 
+            y: fromY, 
+            opacity: 0, 
+            scale: fromScale, 
+            rotate: fromRotate,
+            skewX: fromRotate * 0.2,
+            filter: "blur(6px) brightness(0.4)",
+            transformOrigin: "center center"
+          });
+
+          // Create ScrollTrigger for the entire row using the first card as trigger
+          if (cardIndex === 0) {
+            ScrollTrigger.create({
+              trigger: card,
+              start: "top 80%",
+              end: "bottom 20%",
+              onEnter: () => {
+                // Animate both cards in the row simultaneously
+                rowCards.forEach((rowCard, idx) => {
+                  if (!rowCard) return;
+                  
+                  gsap.to(rowCard, {
+                    x: 0,
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    rotate: 0,
+                    skewX: 0,
+                    filter: "blur(0px) brightness(1)",
+                    duration: 1.8,
+                    delay: idx * 0.1, // Slight stagger within row
+                    ease: "expo.out",
+                    overwrite: true,
+                    onComplete: () => {
+                      // Subtle bounce for visual polish
+                      gsap.to(rowCard, {
+                        scale: 1.01,
+                        duration: 0.2,
+                        ease: "back.out(1.7)",
+                        yoyo: true,
+                        repeat: 1
+                      });
+                    }
+                  });
+                });
+              },
+              // onLeave: () => {
+              //   // Animate both cards in the row out
+              //   rowCards.forEach((rowCard, idx) => {
+              //     if (!rowCard) return;
+                  
+              //     const isLeft = idx === 0;
+              //     const exitX = isLeft ? -window.innerWidth * 0.2 : window.innerWidth * 0.2;
+              //     const exitRotate = isLeft ? -5 : 5;
+                  
+              //     gsap.to(rowCard, {
+              //       x: exitX,
+              //       y: -50,
+              //       opacity: 0.2,
+              //       scale: 0.9,
+              //       rotate: exitRotate,
+              //       skewX: exitRotate * 0.1,
+              //       filter: "blur(3px) brightness(0.6)",
+              //       duration: 1,
+              //       delay: idx * 0.05,
+              //       ease: "expo.in",
+              //       overwrite: true,
+              //     });
+              //   });
+              // },
+              onEnterBack: () => {
+                // Re-enter animation
+                rowCards.forEach((rowCard, idx) => {
+                  if (!rowCard) return;
+                  
+                  gsap.to(rowCard, {
+                    x: 0,
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    rotate: 0,
+                    skewX: 0,
+                    filter: "blur(0px) brightness(1)",
+                    duration: 1.2,
+                    delay: idx * 0.08,
+                    ease: "expo.out",
+                    overwrite: true,
+                  });
+                });
+              },
+              onLeaveBack: () => {
+                // Exit back animation
+                rowCards.forEach((rowCard, idx) => {
+                  if (!rowCard) return;
+                  
+                  const isLeft = idx === 0;
+                  const exitX = isLeft ? -window.innerWidth * 0.4 : window.innerWidth * 0.4;
+                  const exitRotate = isLeft ? -10 : 10;
+                  
+                  gsap.to(rowCard, {
+                    x: exitX,
+                    y: -100 + rowIndex * 50,
+                    opacity: 0,
+                    scale: 0.8,
+                    rotate: exitRotate,
+                    skewX: exitRotate * 0.2,
+                    filter: "blur(6px) brightness(0.4)",
+                    duration: 0.8,
+                    delay: (1 - idx) * 0.05, // Reverse order for exit
+                    ease: "expo.in",
+                    overwrite: true,
+                  });
+                });
+              },
+            });
+          }
+
+          // Individual hover animations
+          const cardElement = card;
+          if (cardElement) {
+            cardElement.addEventListener('mouseenter', () => {
+              gsap.to(cardElement, {
+                scale: 1.03,
+                rotate: 0,
+                filter: "blur(0px) brightness(1.1)",
+                duration: 0.3,
+                ease: "power2.out",
+              });
+            });
+
+            cardElement.addEventListener('mouseleave', () => {
+              gsap.to(cardElement, {
+                scale: 1,
+                rotate: 0,
+                filter: "blur(0px) brightness(1)",
+                duration: 0.3,
+                ease: "power2.out",
+              });
+            });
+          }
+        });
+      });
+    }
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-black">
+      
+      {/* Enhanced Hero Section */}
+      <section ref={heroSectionRef} className="relative py-20 px-4 overflow-hidden">
+        <div className="max-w-6xl mx-auto text-center">
+          <Badge className="bg-[#131315] text-white font-medium px-9 py-3 rounded-[100px] border border-[rgba(255,255,255,.4)] shadow-[0_0_20px_rgba(255,255,255,0.2)] mb-10">
+            <div className="w-5 h-5 mr-2 bg-[url(/clip-path-group.png)] bg-[100%_100%]" />
+            Portfolio
+          </Badge>
+          
+          <h1 
+            ref={titleRef}
+            className="text-5xl md:text-[64px] font-bold text-white leading-tight md:leading-[76.8px] [font-family:'Inter',Helvetica] mb-6"
+            style={{ transformStyle: 'preserve-3d' }}
+          >
+            Our Work Speaks
+            <br />
+            For Itself
+          </h1>
+          
+          <p 
+            ref={subtitleRef}
+            className="text-lg font-medium text-[#cccccc] leading-[27px] [font-family:'Instrument_Sans',Helvetica] max-w-3xl mx-auto mb-12"
+          >
+            From startups to enterprises, we've helped businesses across industries bring their digital visions to life. 
+            Explore our portfolio of successful projects and see how we can transform your ideas into reality.
+          </p>
+          
+          <div 
+            ref={badgesRef}
+            className="flex flex-wrap justify-center gap-3 mb-16"
+          >
+            {services.map((service, index) => (
+              <Badge 
+                key={index} 
+                variant="outline" 
+                className="bg-[#1a1a1a] text-[#cccccc] border-[#333] px-4 py-2 hover:bg-[#2a2a2a] hover:border-[#555] transition-all duration-300"
+                style={{
+                  animationDelay: `${index * 0.1}s`,
+                  willChange: 'transform'
+                }}
+              >
+                {service}
+              </Badge>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced Projects Grid */}
+      <section ref={portfolioSectionRef} className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            {portfolioProjects.map((project, index) => (
+              <div
+                key={index}
+                ref={el => {
+                  portfolioCardRefs.current[index] = el;
+                }}
+                style={{ 
+                  willChange: 'transform, opacity, filter',
+                  transformStyle: 'preserve-3d'
+                }}
+              >
+                <Card className="bg-[#111111] border border-[#333] rounded-xl overflow-hidden group hover:border-[#555] transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)]">
+                  <div className="relative h-80 overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-contain bg-white group-hover:scale-110 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent group-hover:from-black/40 transition-all duration-500" />
+                    <Badge className="absolute top-4 left-4 bg-white text-black group-hover:bg-[#f0f0f0] transition-colors duration-300">
+                      {project.category}
+                    </Badge>
+                  </div>
+                  
+                  <CardContent className="p-6">
+                    <h3 className="text-2xl font-bold text-white mb-3 [font-family:'Inter',Helvetica] group-hover:text-[#f8f8f8] transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    
+                    <p className="text-[#cccccc] leading-relaxed mb-4 group-hover:text-[#e0e0e0] transition-colors duration-300">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tags.map((tag, tagIndex) => (
+                        <Badge 
+                          key={tagIndex} 
+                          variant="outline" 
+                          className="bg-[#1a1a1a] text-[#888] border-[#333] text-xs group-hover:bg-[#2a2a2a] group-hover:border-[#444] group-hover:text-[#aaa] transition-all duration-300"
+                          style={{
+                            animationDelay: `${tagIndex * 0.05}s`
+                          }}
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                    
+                    {/* Enhanced interaction indicator */}
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm text-[#888] italic">
+                      View project details →
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+}
