@@ -1,10 +1,10 @@
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-
 import React from "react";
-import { Authors, caseStudies } from "@/data/portfolio";
+
+import { caseStudies } from "@/data/portfolio";
+
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function CaseStudiesPage() {
 

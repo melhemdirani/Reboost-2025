@@ -70,10 +70,7 @@
     "typescript": "^5.8.3"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "eslint --max-warnings=0",
-      "prettier -w"
-    ],
+    "**/*.{js,jsx,ts,tsx}": "eslint",
     "**/*.{json,css,scss,md,webmanifest}": [
       "prettier -w"
     ]

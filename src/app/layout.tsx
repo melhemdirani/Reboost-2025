@@ -6,8 +6,8 @@ import '@/styles/globals.css';
 import '@/styles/colors.css';
 
 import { siteConfig } from '@/constant/config';
-import { NavigationSection } from '@/sections/NavigationSection';
 import { FooterSection } from '@/sections/FooterSection';
+import { NavigationSection } from '@/sections/NavigationSection';
 
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
@@ -58,10 +58,41 @@ export default function RootLayout({
 }) {
   return (
     <html>
-       <body className='bg-black'>
-      <NavigationSection />
-     {children}
-      <FooterSection />
+      <head>
+        <script
+          async
+          src='https://www.googletagmanager.com/gtag/js?id=G-0CPD5VYQJB'
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-0CPD5VYQJB');
+              `,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:3925131,hjsv:6};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+              })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+            `,
+          }}
+        />
+      </head>
+      <body className='bg-black'>
+        <NavigationSection />
+        {children}
+        <FooterSection />
       </body>
     </html>
   );

@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
+import { FaEnvelope, FaLinkedinIn, FaMapMarkerAlt,FaPhone, FaWhatsapp } from "react-icons/fa";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { FaLinkedinIn, FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
 export const ContactSection = () => {
   const [formData, setFormData] = useState({

@@ -3,8 +3,8 @@
 import * as React from 'react';
 import '@/lib/env';
 
-import { MainContentSection } from '@/sections/MainContentSection';
 import { FeaturesSection } from '@/sections/FeaturesSection';
+import { MainContentSection } from '@/sections/MainContentSection';
 
 export default function HomePage() {
   return (

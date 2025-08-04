@@ -1,6 +1,7 @@
-import React from "react";
 import { motion } from "framer-motion";
+import React from "react";
 import { useInView } from "react-intersection-observer";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 

@@ -1,39 +1,35 @@
 // Portfolio data for new website version
 // Only: image, title, description, tech stack, testimonials
+import aiRestaurantImage from "@/assets/portfolio/ai-restaurant.png";
+import baitbaitkImage from "@/assets/portfolio/baitbaitk.png";
+import barberImage from "@/assets/portfolio/barber.png";
+import bizritravelImage from "@/assets/portfolio/bizritravel.png";
+import bluvowsImage from "@/assets/portfolio/bluvows.png";
+import compassImage from "@/assets/portfolio/compass.png";
+import danashImage from "@/assets/portfolio/danash.png";
+import dealdonowImage from "@/assets/portfolio/dealdonow.png";
+import ecommerceImage from "@/assets/portfolio/ecommerce.png";
 import educifyImage from "@/assets/portfolio/educify.png";
-import onroImage from "@/assets/portfolio/onro.png";
-import incisImage from "@/assets/portfolio/incis.png";
-import taptechImage from "@/assets/portfolio/taptech.png";
+import emecImage from "@/assets/portfolio/emec.png";
+import figsandfindsImage from "@/assets/portfolio/figsandfinds.png";
+import foodblogImage from "@/assets/portfolio/foodblog.png";
+import hotelImage from "@/assets/portfolio/hotel.png";
+import karmaImage from "@/assets/portfolio/karma.png";
 import mawahibImage from "@/assets/portfolio/mawahib.png";
+import nfc360Image from "@/assets/portfolio/nfc360.png";
+import nftImage from "@/assets/portfolio/nft.png";
 import pawsmobImage from "@/assets/portfolio/pawsmob.png";
 import purecuresImage from "@/assets/portfolio/purecures.png";
-import compassImage from "@/assets/portfolio/compass.png";
-import dealdonowImage from "@/assets/portfolio/dealdonow.png";
-import emecImage from "@/assets/portfolio/emec.png";
-import bluvowsImage from "@/assets/portfolio/bluvows.png";
-import figsandfindsImage from "@/assets/portfolio/figsandfinds.png";
-import nfc360Image from "@/assets/portfolio/nfc360.png";
-import danashImage from "@/assets/portfolio/danash.png";
-import baitbaitkImage from "@/assets/portfolio/baitbaitk.png";
-import stepsweeImage from "@/assets/portfolio/stepswee.png";
-import bizritravelImage from "@/assets/portfolio/bizritravel.png";
 import rayandatesImage from "@/assets/portfolio/rayandates.png";
-import ecommerceImage from "@/assets/portfolio/ecommerce.png";
-import hotelImage from "@/assets/portfolio/hotel.png";
-import nftImage from "@/assets/portfolio/nft.png";
-import barberImage from "@/assets/portfolio/barber.png";
-import karmaImage from "@/assets/portfolio/karma.png";
-import foodblogImage from "@/assets/portfolio/foodblog.png";
-import aiRestaurantImage from "@/assets/portfolio/ai-restaurant.png";
-
-
+import stepsweeImage from "@/assets/portfolio/stepswee.png";
+import taptechImage from "@/assets/portfolio/taptech.png";
+import basil from "@/assets/testimonials/basil.jpeg";
+import lisa from "@/assets/testimonials/lisa.jpg";
 // Testimonials
 import maroun from "@/assets/testimonials/maroun.jpeg";
 import mustafa from "@/assets/testimonials/mustafa.jpeg";
 import nour from "@/assets/testimonials/nour.png";
 import sam from "@/assets/testimonials/sam.jpeg";
-import lisa from "@/assets/testimonials/lisa.jpg";
-import basil from "@/assets/testimonials/basil.jpeg";
 
 
 export type PortfolioProject = {

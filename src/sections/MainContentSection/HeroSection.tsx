@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import React, { useEffect,useRef } from "react";
 gsap.registerPlugin(MotionPathPlugin);
 
 const HeroSection = () => {
