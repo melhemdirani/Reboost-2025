@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 import {
@@ -49,7 +50,8 @@ export default function ServicesPage() {
 
   const services = [
     {
-      id: 'ai',
+      id: 'web-development',
+      slug: 'web-development',
       title: 'Custom Web Development',
       description:
         'Modern, scalable web applications built with cutting-edge technologies. From simple websites to complex enterprise platforms.',
@@ -73,11 +75,13 @@ export default function ServicesPage() {
       ],
       deliverables: ['Source code', 'Documentation', 'Deployment', 'Training'],
       timeline: '4-12 weeks',
+      startingPrice: '$5,000',
       idealFor:
         'Businesses needing modern web presence, e-commerce platforms, or internal tools',
     },
     {
-      id: 'mobile',
+      id: 'mobile-development',
+      slug: 'mobile-development',
       title: 'Mobile App Development',
       description:
         'Native and cross-platform mobile applications that deliver exceptional user experiences on iOS and Android.',
@@ -106,11 +110,13 @@ export default function ServicesPage() {
         'Analytics setup',
       ],
       timeline: '8-16 weeks',
+      startingPrice: '$8,000',
       idealFor: 'Startups and enterprises looking to reach mobile audiences',
     },
     {
       title: 'SaaS Platform Development',
-      id: 'saas',
+      id: 'saas-development',
+      slug: 'saas-development',
       description:
         'End-to-end SaaS platforms with multi-tenancy, subscription management, and scalable architecture.',
       icon: '☁️',
@@ -138,11 +144,13 @@ export default function ServicesPage() {
         'User onboarding',
       ],
       timeline: '12-24 weeks',
+      startingPrice: '$15,000',
       idealFor:
         'Entrepreneurs building scalable software-as-a-service businesses',
     },
     {
-      id: null,
+      id: 'ai-ml-integration',
+      slug: 'ai-ml-integration',
       title: 'AI & Machine Learning Integration',
       description:
         'Intelligent automation and AI-powered features integrated seamlessly into your existing or new applications.',
@@ -171,10 +179,12 @@ export default function ServicesPage() {
         'Performance metrics',
       ],
       timeline: '6-16 weeks',
+      startingPrice: '$10,000',
       idealFor: 'Companies looking to leverage AI for competitive advantage',
     },
     {
-      id: null,
+      id: 'devops-infrastructure',
+      slug: 'devops-infrastructure',
       title: 'DevOps & Cloud Infrastructure',
       description:
         'Robust, scalable cloud infrastructure with automated deployment pipelines and monitoring systems.',
@@ -203,11 +213,13 @@ export default function ServicesPage() {
         'Documentation',
       ],
       timeline: '4-8 weeks',
+      startingPrice: '$7,000',
       idealFor:
         'Teams needing reliable, scalable infrastructure and deployment processes',
     },
     {
-      id: null,
+      id: 'ui-ux-design',
+      slug: 'ui-ux-design',
       title: 'UI/UX Design & Development',
       description:
         'User-centered design that converts visitors into customers, backed by data-driven insights and modern design principles.',
@@ -236,6 +248,7 @@ export default function ServicesPage() {
         'Frontend code',
       ],
       timeline: '6-12 weeks',
+      startingPrice: '$6,000',
       idealFor:
         'Businesses wanting to improve user experience and conversion rates',
     },
@@ -411,8 +424,11 @@ export default function ServicesPage() {
                       <Button
                         variant='outline'
                         className='w-fit bg-transparent border-white text-white hover:bg-white hover:text-black transition-all duration-300 px-8 py-3 rounded-full'
+                        asChild
                       >
-                        Learn more →
+                        <Link href={`/services/${service.slug}`}>
+                          Learn more →
+                        </Link>
                       </Button>
                     </div>
 
@@ -475,8 +491,11 @@ export default function ServicesPage() {
                     <Button
                       variant='outline'
                       className='w-full bg-transparent border-white text-white hover:bg-white hover:text-black transition-all duration-300 px-6 py-2.5 rounded-full text-sm md:text-base'
+                      asChild
                     >
-                      Learn more →
+                      <Link href={`/services/${service.slug}`}>
+                        Learn more →
+                      </Link>
                     </Button>
                   </div>
                 </div>

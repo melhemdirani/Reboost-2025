@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaLinkedinIn, FaMailBulk,FaPhone, FaWhatsapp } from 'react-icons/fa';
+import { FaLinkedinIn, FaMailBulk, FaPhone, FaWhatsapp } from 'react-icons/fa';
 
 export const FooterSection = () => {
   // Navigation links data
@@ -10,11 +10,21 @@ export const FooterSection = () => {
       { text: 'Team', href: '/about#team' },
       { text: 'Services', href: '/services' },
     ],
-
+    services: [
+      { text: 'Web Development', href: '/services/web-development' },
+      {
+        text: 'Mobile App Development',
+        href: '/services/mobile-development',
+      },
+      { text: 'UI/UX Design', href: '/services/ui-ux-design' },
+      { text: 'AI & ML Solutions', href: '/services/ai-ml-integration' },
+      { text: 'DevOps & Cloud', href: '/services/devops-infrastructure  ' },
+      { text: 'SaaS Platforms', href: '/services/saas-development' },
+    ],
     resources: [
       { text: 'Portfolio', href: '/portfolio' },
       { text: 'Case Studies', href: '/case-studies' },
-      // { text: "Blog", href: "#blog" },
+      // { text: 'Blog', href: '/blog' },
       { text: 'FAQ', href: '/home#faq' },
       { text: 'Contact Us', href: '/contact' },
     ],
@@ -105,7 +115,7 @@ export const FooterSection = () => {
             {/* Enhanced Footer Content */}
             <div className='relative z-10 w-full'>
               {/* Main Footer Grid - Mobile Optimized */}
-              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-8'>
+              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8 mb-8'>
                 {/* Company Info & Logo */}
                 <div className='lg:col-span-2'>
                   <div className='mb-4 md:mb-6'>
@@ -150,6 +160,24 @@ export const FooterSection = () => {
                   </h4>
                   <ul className='space-y-2 md:space-y-3'>
                     {footerLinks.resources.map((link, index) => (
+                      <li key={index}>
+                        <a
+                          href={link.href}
+                          className="text-[#cccccc] hover:text-white transition-colors duration-200 font-['Instrument_Sans',Helvetica] text-sm md:text-base"
+                        >
+                          {link.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {/* Services Links */}
+                <div>
+                  <h4 className="text-white font-semibold text-base md:text-lg mb-3 md:mb-4 font-['Inter',Helvetica]">
+                    Services
+                  </h4>
+                  <ul className='space-y-2 md:space-y-3'>
+                    {footerLinks.services.map((link, index) => (
                       <li key={index}>
                         <a
                           href={link.href}

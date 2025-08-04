@@ -20,7 +20,8 @@ export const NavigationSection = () => {
     { id: 2, label: 'About', width: '93px', link: '/about' },
     { id: 3, label: 'Portfolio', width: '142px', link: '/portfolio' },
     { id: 4, label: 'Services', width: '142px', link: '/services' },
-    { id: 5, label: 'Case Studies', width: '142px', link: '/case-studies' },
+    // { id: 5, label: 'Blog', width: '93px', link: '/blog' },
+    { id: 6, label: 'Case Studies', width: '142px', link: '/case-studies' },
   ];
 
   return (
