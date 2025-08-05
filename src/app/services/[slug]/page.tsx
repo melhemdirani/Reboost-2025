@@ -91,12 +91,14 @@ export default function ServicePage() {
                   Get Started - {service.startingPrice}+
                 </Button>
               </Link>
-              <Button
-                variant='outline'
-                className='border-white text-white hover:bg-white hover:text-black px-8 py-3 rounded-full'
-              >
-                View Portfolio
-              </Button>
+              <Link href='/portfolio'>
+                <Button
+                  variant='outline'
+                  className='border-white text-white hover:bg-white hover:text-black px-8 py-3 rounded-full'
+                >
+                  View Portfolio
+                </Button>
+              </Link>
             </div>
 
             <div className='grid grid-cols-2 gap-6 text-center'>
