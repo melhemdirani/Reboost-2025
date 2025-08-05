@@ -1,4 +1,4 @@
-import { AnimatePresence,motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import React, { useRef, useState } from 'react';
 import Slider from 'react-slick';
 
@@ -201,7 +201,7 @@ export const FeaturesSection = () => {
                     </p>
                     <div className='flex items-center gap-3 mt-6 border-t pt-4 border-[#333]'>
                       <img
-                        src={testimonial.image.src}
+                        src={testimonial.image}
                         alt={testimonial.name}
                         className='w-10 h-10 rounded-full object-cover'
                       />

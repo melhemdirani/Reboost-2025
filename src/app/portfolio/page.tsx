@@ -1,9 +1,10 @@
 'use client';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 
-import { portfolioProjects } from '@/data/portfolio';
+import { processedPortfolioProjects } from '@/data/portfolio';
 
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -321,7 +322,7 @@ export default function PortfolioPage() {
       <section ref={portfolioSectionRef} className='py-12 md:py-20 px-4'>
         <div className='max-w-7xl mx-auto'>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12'>
-            {portfolioProjects.map((project, index) => (
+            {processedPortfolioProjects.map((project, index) => (
               <div
                 key={index}
                 ref={(el) => {
@@ -332,49 +333,51 @@ export default function PortfolioPage() {
                   transformStyle: 'preserve-3d',
                 }}
               >
-                <Card className='bg-[#111111] border border-[#333] rounded-xl overflow-hidden group md:hover:border-[#555] transition-all duration-500 md:hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)]'>
-                  <div className='relative h-48 sm:h-64 md:h-80 overflow-hidden'>
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className='w-full h-full object-contain bg-white md:group-hover:scale-110 transition-transform duration-700 ease-out'
-                    />
-                    <div className='absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:group-hover:from-black/40 transition-all duration-500' />
-                    <Badge className='absolute top-3 md:top-4 left-3 md:left-4 bg-white text-black md:group-hover:bg-[#f0f0f0] transition-colors duration-300 text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5'>
-                      {project.category}
-                    </Badge>
-                  </div>
-
-                  <CardContent className='p-4 md:p-6'>
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 md:mb-3 [font-family:'Inter',Helvetica] md:group-hover:text-[#f8f8f8] transition-colors duration-300 leading-tight">
-                      {project.title}
-                    </h3>
-
-                    <p className='text-sm md:text-base text-[#cccccc] leading-relaxed mb-3 md:mb-4 md:group-hover:text-[#e0e0e0] transition-colors duration-300'>
-                      {project.description}
-                    </p>
-
-                    <div className='flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6'>
-                      {project.tags.map((tag, tagIndex) => (
-                        <Badge
-                          key={tagIndex}
-                          variant='outline'
-                          className='bg-[#1a1a1a] text-[#888] border-[#333] text-xs px-2 py-0.5 md:px-2.5 md:py-1 md:group-hover:bg-[#2a2a2a] md:group-hover:border-[#444] md:group-hover:text-[#aaa] transition-all duration-300'
-                          style={{
-                            animationDelay: `${tagIndex * 0.05}s`,
-                          }}
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
+                <Link href={`/portfolio/${project.slug}`}>
+                  <Card className='bg-[#111111] border border-[#333] rounded-xl overflow-hidden group md:hover:border-[#555] transition-all duration-500 md:hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] cursor-pointer'>
+                    <div className='relative h-48 sm:h-64 md:h-80 overflow-hidden'>
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className='w-full h-full object-contain bg-white md:group-hover:scale-110 transition-transform duration-700 ease-out'
+                      />
+                      <div className='absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:group-hover:from-black/40 transition-all duration-500' />
+                      <Badge className='absolute top-3 md:top-4 left-3 md:left-4 bg-white text-black md:group-hover:bg-[#f0f0f0] transition-colors duration-300 text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5'>
+                        {project.category}
+                      </Badge>
                     </div>
 
-                    {/* Enhanced interaction indicator */}
-                    {/* <div className='opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 text-xs md:text-sm text-[#888] italic'>
-                      View project details →
-                    </div> */}
-                  </CardContent>
-                </Card>
+                    <CardContent className='p-4 md:p-6'>
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 md:mb-3 [font-family:'Inter',Helvetica] md:group-hover:text-[#f8f8f8] transition-colors duration-300 leading-tight">
+                        {project.title}
+                      </h3>
+
+                      <p className='text-sm md:text-base text-[#cccccc] leading-relaxed mb-3 md:mb-4 md:group-hover:text-[#e0e0e0] transition-colors duration-300'>
+                        {project.description}
+                      </p>
+
+                      <div className='flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6'>
+                        {project.tags.map((tag, tagIndex) => (
+                          <Badge
+                            key={tagIndex}
+                            variant='outline'
+                            className='bg-[#1a1a1a] text-[#888] border-[#333] text-xs px-2 py-0.5 md:px-2.5 md:py-1 md:group-hover:bg-[#2a2a2a] md:group-hover:border-[#444] md:group-hover:text-[#aaa] transition-all duration-300'
+                            style={{
+                              animationDelay: `${tagIndex * 0.05}s`,
+                            }}
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+
+                      {/* Enhanced interaction indicator */}
+                      <div className='opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 text-xs md:text-sm text-[#888] italic'>
+                        View project details →
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               </div>
             ))}
           </div>

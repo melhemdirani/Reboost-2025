@@ -445,7 +445,7 @@ export const MainContentSection = () => {
                 }}
                 style={{ willChange: 'transform, opacity' }}
               >
-                <Card className='rounded-[20px] border border-solid border-[rgba(255,255,255,.4)] hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] bg-transparent transition-transform duration-300 ease-linear hover:scale-102'>
+                <Card className='rounded-[20px] h-full w-full border border-solid border-[rgba(255,255,255,.4)] hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] bg-transparent transition-transform duration-300 ease-linear hover:scale-102'>
                   <CardContent className='p-4 md:p-6'>
                     <div className='flex items-center'>
                       <img
