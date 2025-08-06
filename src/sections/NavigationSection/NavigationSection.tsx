@@ -16,7 +16,7 @@ export const NavigationSection = () => {
 
   // Navigation items data for easy mapping
   const navigationItems = [
-    { id: 1, label: 'Home', width: '131px', link: '' },
+    { id: 1, label: 'Home', width: '131px', link: '/' },
     { id: 2, label: 'About', width: '93px', link: '/about' },
     { id: 3, label: 'Portfolio', width: '142px', link: '/portfolio' },
     { id: 4, label: 'Services', width: '142px', link: '/services' },
