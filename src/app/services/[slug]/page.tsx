@@ -91,7 +91,7 @@ export default function ServicePage() {
                   Get Started - {service.startingPrice}+
                 </Button>
               </Link>
-              <Link href='/portfolio'>
+              <Link href='/portfolio' className='cursor-pointer'>
                 <Button
                   variant='outline'
                   className='border-white text-white hover:bg-white hover:text-black px-8 py-3 rounded-full'
@@ -235,7 +235,7 @@ export default function ServicePage() {
       </section>
 
       {/* CTA Section */}
-      <section className='w-full max-w-[1320px] mx-auto px-4 py-16 border-t border-[#333]'>
+      {/* <section className='w-full max-w-[1320px] mx-auto px-4 py-16 border-t border-[#333]'>
         <div className='text-center'>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 [font-family:'Inter',Helvetica]">
             Ready to Get Started?
@@ -260,7 +260,7 @@ export default function ServicePage() {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Related Services */}
       <section className='w-full max-w-[1320px] mx-auto px-4 py-16 border-t border-[#333]'>

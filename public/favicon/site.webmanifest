@@ -1,15 +1,14 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "Reboost",
+  "short_name": "Reboost",
   "icons": [
-
     {
       "src": "/favicon/favicon.ico",
       "sizes": "512x512",
       "type": "image/x-icon"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "background_color": "#000000",
   "display": "standalone"
 }
