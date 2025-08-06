@@ -25,7 +25,7 @@ export const FooterSection = () => {
       { text: 'Portfolio', href: '/portfolio' },
       { text: 'Case Studies', href: '/case-studies' },
       // { text: 'Blog', href: '/blog' },
-      { text: 'FAQ', href: '/home#faq' },
+      { text: 'FAQ', href: '/#faq' },
       { text: 'Contact Us', href: '/contact' },
     ],
     legal: [

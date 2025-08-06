@@ -16,7 +16,7 @@ export const NavigationSection = () => {
 
   // Navigation items data for easy mapping
   const navigationItems = [
-    { id: 1, label: 'Home', width: '131px', link: '/home' },
+    { id: 1, label: 'Home', width: '131px', link: '' },
     { id: 2, label: 'About', width: '93px', link: '/about' },
     { id: 3, label: 'Portfolio', width: '142px', link: '/portfolio' },
     { id: 4, label: 'Services', width: '142px', link: '/services' },
@@ -30,7 +30,7 @@ export const NavigationSection = () => {
         <div className='relative h-full max-w-[1440px] mx-auto'>
           <div className='flex items-center justify-between h-full px-4 md:px-[60px]'>
             <div className='h-[46px] relative'>
-              <Link href='/home'>
+              <Link href='/'>
                 <img
                   className=' h-[50px] mt-[5px] object-contain cursor-pointer'
                   alt='Logo'

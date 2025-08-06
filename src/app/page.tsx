@@ -1,21 +1,17 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import * as React from 'react';
 import '@/lib/env';
 
-export default function RootPage() {
-  const router = useRouter();
+import { FeaturesSection } from '@/sections/FeaturesSection';
+import { MainContentSection } from '@/sections/MainContentSection';
 
-  React.useEffect(() => {
-    // Redirect to home page
-    router.push('/home');
-  }, [router]);
-
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-black flex items-center justify-center">
-      <div className="text-white text-xl">
-        Redirecting to Home...
+    <main>
+      <div className='flex flex-col w-full min-h-screen bg-black'>
+        <MainContentSection />
+        <FeaturesSection />
       </div>
     </main>
   );
