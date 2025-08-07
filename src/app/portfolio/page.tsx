@@ -334,7 +334,7 @@ export default function PortfolioPage() {
                 }}
               >
                 <Link href={`/portfolio/${project.slug}`}>
-                  <Card className='bg-[#111111] border border-[#333] rounded-xl overflow-hidden group md:hover:border-[#555] transition-all duration-500 md:hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] cursor-pointer'>
+                  <Card className='bg-[#111111] h-full border border-[#333] rounded-xl overflow-hidden group md:hover:border-[#555] transition-all duration-500 md:hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] cursor-pointer'>
                     <div className='relative h-48 sm:h-64 md:h-80 overflow-hidden'>
                       <img
                         src={project.image}

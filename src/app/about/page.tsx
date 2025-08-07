@@ -9,6 +9,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import AboutVisual from '@/app/about/AboutVisual';
 
 import Earth from './earth.png';
+import { teamMembers } from '@/data/team';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -133,46 +134,6 @@ export default function AboutPage() {
     { number: '100%', label: 'Client Satisfaction' },
     { number: '3x', label: 'Faster Development' },
     { number: '24/7', label: 'Support Available' },
-  ];
-
-  const teamMembers = [
-    {
-      name: 'Melhem El Dirani',
-      role: 'Founder & CEO',
-      bio: 'Full-stack engineer with 7+ years creating scalable solutions. Leads Reboost in delivering cutting-edge MVPs.',
-      image: '/melhem.jpeg',
-    },
-    {
-      name: 'Alissar Almousawi',
-      role: 'Head of Marketing',
-      bio: 'Marketing strategist with a passion for driving growth through innovative campaigns. Experienced in both B2B and B2C marketing.',
-      image: '/alissar.jpeg',
-    },
-    {
-      name: 'Sandra El Abboud',
-      role: 'Head of Design',
-      bio: 'Creative designer with a focus on user experience and visual storytelling. Transforms complex ideas into intuitive designs.',
-      image: '/sandra.jpeg',
-    },
-    {
-      name: 'Ziad Baydoun',
-      role: 'Head of Engineering',
-      bio: 'Expert in cloud architecture and DevOps. Specializes in building systems that scale from zero to millions of users.',
-      image: '/Ziad Baydoun.jpeg',
-    },
-    {
-      name: 'Adnan Sayed',
-      role: 'Lead Developer',
-      bio: 'Experienced in building high-performance web applications. Passionate about clean code and best practices.',
-      image: '/adnan.jpeg',
-    },
-
-    {
-      name: 'Ruslan Kain',
-      role: 'AI/ML Specialist',
-      bio: 'AI/ML specialist with a PhD, focused on developing intelligent solutions in natural language processing and computer vision.',
-      image: '/ruslan.jpeg',
-    },
   ];
 
   // GSAP animation for team cards from different corners (disabled on mobile)
@@ -407,7 +368,7 @@ export default function AboutPage() {
                 }}
                 style={{ willChange: 'transform, opacity' }}
               >
-                <Card className='bg-[#111111] border border-[#333] rounded-xl group hover:border-[#555] transition-all duration-300 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)]'>
+                <Card className='bg-[#111111] h-full border border-[#333] rounded-xl group hover:border-[#555] transition-all duration-300 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)]'>
                   <CardContent className='p-4 md:p-6 text-center'>
                     {/* Profile image */}
                     <div className='relative w-24 h-24 md:w-34 md:h-34 mx-auto mb-3 md:mb-4 rounded-full overflow-hidden border-2 border-white/20'>
@@ -430,7 +391,32 @@ export default function AboutPage() {
 
                     {/* Bio */}
                     <p className='text-xs md:text-sm text-[#cccccc] leading-relaxed'>
-                      {member.bio}
+                      {typeof member.bio === 'string' &&
+                      member.bio.includes('Upwork')
+                        ? member.bio
+                            .split('Upwork')
+                            .reduce<React.ReactNode[]>(
+                              (acc, part, idx, arr) => {
+                                acc.push(part);
+                                if (idx < arr.length - 1) {
+                                  acc.push(
+                                    <a
+                                      style={{ color: 'inherit' }}
+                                      key={`upwork-link-${idx}`}
+                                      href='https://www.upwork.com/freelancers/melhem'
+                                      target='_blank'
+                                      rel='noopener noreferrer'
+                                      className='text-blue-400 underline'
+                                    >
+                                      Upwork
+                                    </a>
+                                  );
+                                }
+                                return acc;
+                              },
+                              []
+                            )
+                        : member.bio}
                     </p>
                   </CardContent>
                 </Card>
